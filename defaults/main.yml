@@ -7,8 +7,15 @@ apache_listen_port: 80
 apache_listen_port_ssl: 443
 
 apache_create_vhosts: true
+
+# deprecaed: use apache_vhosts_config instead
 apache_vhosts_filename: "vhosts.conf"
 apache_vhosts_template: "vhosts.conf.j2"
+
+# Support creating multiple vhosts
+apache_vhosts_config:
+  - filename: "{{ apache_vhosts_filename }}"
+    template: "{{ apache_vhosts_template }}"
 
 # On Debian/Ubuntu, a default virtualhost is included in Apache's configuration.
 # Set this to `true` to remove that default.

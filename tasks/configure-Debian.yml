@@ -39,19 +39,21 @@
 
 - name: Add apache vhosts configuration.
   template:
-    src: "{{ apache_vhosts_template }}"
-    dest: "{{ apache_conf_path }}/sites-available/{{ apache_vhosts_filename }}"
+    src: "{{ item.template }}"
+    dest: "{{ apache_conf_path }}/sites-available/{{ item.filename }}"
     owner: root
     group: root
     mode: 0644
+  with_items: {{ apache_vhosts_config }}
   notify: restart apache
   when: apache_create_vhosts
 
 - name: Add vhost symlink in sites-enabled.
   file:
-    src: "{{ apache_conf_path }}/sites-available/{{ apache_vhosts_filename }}"
-    dest: "{{ apache_conf_path }}/sites-enabled/{{ apache_vhosts_filename }}"
+    src: "{{ apache_conf_path }}/sites-available/{{ item.filename }}"
+    dest: "{{ apache_conf_path }}/sites-enabled/{{ item.filename }}"
     state: link
+  with_items: {{ apache_vhosts_config }}
   notify: restart apache
   when: apache_create_vhosts
 
