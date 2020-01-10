@@ -1,7 +1,7 @@
 ---
 - name: Install SELinux Python dependencies.
   package:
-    name: libselinux-python
+    name: "{{ ( (ansible_facts.distribution_major_version | int) < 8) | ternary('libselinux-python','python3-libselinux') }}"
     state: present
 
 - name: Enable Apache mods.
