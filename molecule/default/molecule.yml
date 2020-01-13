@@ -19,6 +19,8 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+    options:
+      x: skip_ansible_lint
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
 scenario:
