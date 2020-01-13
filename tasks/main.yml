@@ -39,6 +39,8 @@
 # Configure Apache.
 - name: Configure Apache.
   include_tasks: "configure-{{ ansible_os_family }}.yml"
+  tags:
+    - skip_ansible_lint
 
 - name: Do an apache config syntax check before restarting it.
   command: apachectl -t
