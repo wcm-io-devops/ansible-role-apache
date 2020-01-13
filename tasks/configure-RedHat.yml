@@ -1,7 +1,8 @@
 ---
 - name: Install SELinux Python dependencies.
   package:
-    name: "{{ ( (ansible_facts.distribution_major_version | int) < 8) | ternary('libselinux-python','python3-libselinux') }}"
+    name: >-
+      {{ ( (ansible_facts.distribution_major_version | int) < 8) | ternary('libselinux-python','python3-libselinux') }}
     state: present
 
 - name: Remove default vhost configurations
