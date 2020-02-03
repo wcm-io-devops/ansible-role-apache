@@ -5,7 +5,7 @@ apache_daemon_path: /usr/sbin/
 apache_server_root: /etc/httpd
 apache_conf_path: /etc/httpd/conf.d
 
-apache_vhosts_version: "2.2"
+apache_vhosts_version: "2.4"
 
 __apache_packages:
   - httpd
