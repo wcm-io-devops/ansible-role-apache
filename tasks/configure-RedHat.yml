@@ -24,13 +24,16 @@
   stat:
     path: /etc/pki/tls/certs/localhost.crt
   register: localhost_cert
-  when: ansible_distribution_major_version | int >= 8
+  when:
+    - ansible_distribution_major_version | int >= 8
+    - not apache_remove_default_vhost_ssl
 
 - name: Ensure httpd certs are installed (RHEL 8 and later).
   command: /usr/libexec/httpd-ssl-gencerts
   when:
     - ansible_distribution_major_version | int >= 8
     - not localhost_cert.stat.exists
+    - not apache_remove_default_vhost_ssl
 
 - name: Enable Apache mods.
   apache2_module:
