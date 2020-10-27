@@ -20,11 +20,9 @@
   notify: restart apache
 
 - name: Enable Apache mods.
-  file:
-    src: "{{ apache_server_root }}/mods-available/{{ item }}"
-    dest: "{{ apache_server_root }}/mods-enabled/{{ item }}"
-    state: link
-    mode: 0644
+  apache2_module:
+    name: "{{ item | regex_replace('(\\w+)\\.load','\\1') }}"
+    state: present
   with_items: "{{ apache_mods_enabled }}"
   notify: restart apache
 
