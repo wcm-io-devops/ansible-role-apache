@@ -52,6 +52,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     state: present
+    mode: 0644
   with_items: "{{ apache_ports_configuration_items }}"
   when: item.line is defined
   notify: restart apache
@@ -75,7 +76,7 @@
 - name: Add apache vhosts configuration.
   template:
     src: "{{ apache_vhosts_template }}"
-    dest: "{{ apache_conf_path }}/{{ apache_vhosts_filename }}"
+    dest: "{{ apache_rhel_custom_vhosts_path | default(apache_conf_path) }}/{{ apache_vhosts_filename }}"
     owner: root
     group: root
     mode: 0644
@@ -84,7 +85,7 @@
 
 - name: Remove apache vhosts configuration.
   file:
-    path: "{{ apache_conf_path }}/{{ apache_vhosts_filename }}"
+    path: "{{ apache_rhel_custom_vhosts_path | default(apache_conf_path) }}/{{ apache_vhosts_filename }}"
     state: absent
   notify: restart apache
   when: not apache_create_vhosts
