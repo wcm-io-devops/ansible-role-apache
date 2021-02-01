@@ -1,6 +1,6 @@
 # wcm_io_devops.apache
 
-[![Build Status](https://travis-ci.com/wcm-io-devops/ansible-role-apache.svg?branch=master)](https://travis-ci.com/wcm-io-devops/ansible-role-apache)
+[![CI](https://github.com/wcm-io-devops/ansible-role-apache/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/wcm-io-devops/ansible-role-apache/actions?query=workflow%3ACI)
 
 An Ansible Role that installs Apache 2.x on RHEL/CentOS, Debian/Ubuntu, SLES and Solaris.
 
