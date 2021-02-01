@@ -10,6 +10,8 @@ name: Release
   release:
     types:
       - published
+  push:
+    branches: [ master ]
 
 defaults:
   run:
