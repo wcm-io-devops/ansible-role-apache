@@ -3,6 +3,7 @@ dependencies: []
 
 galaxy_info:
   role_name: apache
+  namespace: wcm_io_devops
   author: Tobias Richter
   description: Apache 2.x for Linux. (fork of geerlingguy.apache)
   company: pro!vision
