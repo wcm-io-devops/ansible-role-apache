@@ -9,3 +9,6 @@ rules:
 ignore: |
   .github/stale.yml
   .travis.yml
+
+warn_list:
+  - yaml

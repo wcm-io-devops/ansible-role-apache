@@ -65,4 +65,4 @@ apache_packages_state: present
 
 # On RHEL/CentOS, in some occasions you might want to use a custom directory for your
 # virtual host files instead of /etc/httpd/conf.d. Use this variable then.
-#apache_rhel_custom_vhosts_path: /etc/httpd/vhosts.d
+# apache_rhel_custom_vhosts_path: /etc/httpd/vhosts.d
